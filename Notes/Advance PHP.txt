@@ -628,3 +628,12 @@ Controller: The Controller is in betweed the Model and the view element. It list
 
 View: The View element is used for presenting the data of the model to the user. 
       This element deals with how to link up with the model's data but doesn't provide any logic regarding what this         	data all about or how users can use these data.
+
+--------------------------------------------------------------------------------------------
+Email Sender
+step 1: Email id sing up
+step 2:use SMTP Mailer in PHP
+
+
+step 3: accounts me jake security me jana he 
+step 4: search app password
