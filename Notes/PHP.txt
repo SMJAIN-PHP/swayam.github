@@ -1,0 +1,543 @@
+PHP (Hypertext Preprocessor)
+
+First name -> Personal Home page --> Now --> Hypertext Preprocessor.
+Invent in 1994 by Rasmus Lerdorf
+PHP is a widely used, open source server side scripting language
+PHP can generate dynamic page content
+PHP files can contain text, HTML, CSS, JavaScript and PHP code.
+PHP files have extension ".php"
+Powerful tool for making dynamic and interactive web pages.
+File save in XAMPP in htdocs name folder.
+PHP Loosly Type 
+
+Features:-
+
+simple
+interpreted
+faster
+Open Source
+Platform Independent
+Case Sensitive
+Speed Comparison of ASP JSP, php faster
+Simplicity
+More frameworks & CMS
+
+
+Why did you choose PHP
+
+PHP inherit from c & c++
+PHP runs on various platforms/OS
+Compatible with almost all servers used today
+Supports a wide range of databases.
+Easy to learn and runs efficiently on the server side
+
+
+Comment: //,/* */
+
+PHP Data Types:-
+
+	String  :  "JilPatel"
+	Integer :  50
+	Float   :  (floating point numbers - also called double)  10.50
+	Boolean :  Yes/No
+	Array   :  $arr=array["a","b","c"]
+	Object  :  $obj = new classname
+	NULL    
+	Resource
+
+	Main Use: String, Integer, Float, Boolean
+
+	PHP is loosely type language due to not define any data type $a="jil";
+	Always declare with '$'.
+
+PHP has three different variable scopes:
+
+	local  : in function that not user out of function
+	global : out of function we can use any where
+	static : static keywords 
+
+Php naming rules
+
+1) starts with latter or _
+
+	$_abc=10;  true
+	$abc123=10; true
+
+	$123abc=10; false
+	$abc a123=10 false // no space
+
+// both work same as print & declaration 
+
+in c & c++
+
+int i=10;
+printf(i);
+
+echo $a=10;
+
+Condition:
+	if
+	if else
+	nested if-else - if-else ni ander if-else
+	if elseif else
+	switch case
+
+Loop:-
+	-While Loop --> First condition check thay pachi run thay
+	$i=10
+	while($i<=10)
+	{
+		echo "<p>".$i."</p>";
+		$i++:
+	}
+
+	-For loop --> Same
+	for($i=10;$i<=50;$i++)
+	{
+		echo $i."<br>";
+	}
+
+	-Do-While Loop --> First run thay pachi last ma condition check thay.
+	$i=10
+	do
+	{
+		echo "<p>".$i."</p>";
+		$i++:
+	}
+	while($i<=10)
+
+Break:
+	for($i=10;$i<=50;$i++)
+	{
+		if($i==51)
+		{
+			break;
+		}
+		echo $i."<br>";
+	}
+
+Continue:
+	for($i=10;$i<=50;$i++)
+	{
+		if($i==51 || $i==9) // '||' --> Call OR   '&&' --> Call AND 
+		{
+			Continue;   //It skip 51 and 9 and continue Other 
+		}
+		echo $i."<br>";
+	}
+	
+
+
+Operator/Symbol:-
+
+Arithmetic Programming:
+	+ , - , * , / , %
+
+Assignment Operator:
+	= --> For assign value += , -= , */
+
+increement & decrimrent Operator:
+	 ++, --
+
+comparision operators:
+	==, >, <, >=, <=, ===
+
+logical operators:   
+	&&(and)--> Both true then enter  ||(or)--> When on con. is true then enter   !(not)--> When Both condition 	is false then enter
+
+Array operators
+
+String operators:
+	-    . ,   .=
+
+Conditional assignment operators:
+	-  (cond)?'if':'else';
+
+	- $age=18;     // turnory operator conditional( ? : )   (cond)? yes : No
+	  echo $ans=($age>=18)? "Man" : "Child"; 
+
+
+Function:-
+
+What is function?
+	Function is block of code.
+	
+	function sum(){
+		$a=20;
+		$b=10;
+		echo $sum=$a+$b;
+
+	}
+	sum();
+
+2 Type of function_exists
+
+	1) Built in Function / predefined count()
+	2) User Defined Funciton sum()
+
+User Defined Function
+
+function sum()
+{
+	$a=20;
+	$b=10;
+	echo $sum=$a+$b."<br>";	
+}
+
+sum();
+
+
+//Function with parameter
+function sum($a,$b)	
+{
+	echo $sum=$a+$b."<br>";	
+}
+
+sum(5,10); //print 15
+
+
+//Function with parameter with default value
+Enter value when call function
+
+function sum($a=0,$b=0)
+{
+	echo $sum=$a+$b."<br>";	
+}
+sum(10,20) //30
+sum(10)    //10
+sum()      //0
+
+
+//Return
+
+function sum()
+{
+	return 5+7; //it store answer in function sum()
+}
+echo sum(); //for print answer
+
+
+Built In Function:-
+
+	$a=25;
+	$name="Jil Patel";
+
+	echo var_dump($a) ."<br>"; //var_dump is check data-type
+	echo var_dump($name) ."<br>";
+
+	echo strlen($name) ."<br>";
+
+
+Include & Require:-
+	- include --> include/load page
+	- include_once --> include/load page only once
+
+
+	- include('include_demo.php');
+	- echo "Morning";
+
+	- include_once('include_demo.php');
+	- echo "Good";
+
+
+	- include & require both same but if file note exists than
+	- include define E_warning so script not terminate.
+
+	- Require gives Fetel Error so script terminate.
+	- So ideal Include use 
+
+
+Errors in PHP:-
+
+	4 Type of Error in PHP
+	1) Warning : include give warning error /file does not exist -- Script not terminate
+	2) Fatal Error : require give fatal error --> It is bad error -- terminate script
+	3) Notice/warning Error : undefine variable -- not terminate script -- it give notice  like declare 'a' 	   and call 'A' then give this error
+	4) syntax/perse error : it give syntax error. It terminate all script.
+
+
+Print and Echo:
+
+	- echo & print() work as print statement but some diffreances here
+	- Speed: echo fast
+	- echo "Hello"; //echo is command
+	- print("Hello"); //print() function()
+	
+	-----------------------------------------------Expresion
+	- $a="Hi, How are you";
+	-printf($a.$b);
+	-echo $a.$a;
+	
+	//Parameter
+	$ans= echo $a; //error
+	$ans= print($a);
+
+	----------------------------------------------- var_dump
+	$a=50;
+	$name="Jil Patel";
+	$c=24.5;
+	
+	echo var_dump($a)."<br>";    //var_dump is show data-type
+	echo var_dump($name)."<br>";
+	echo strlen($name)."<br>";   //strlen is show string length
+	echo var_dump($c)."<br>";
+
+	-------------------------------------------------
+	Exit Statement:
+	- exit is use when check where error is occure. when exit use then other code is not run.
+	
+	echo "Hello, Kem nu<br>";
+	
+	$a=10;
+	$b=30;
+	$c=$a+$b;
+
+	echo $a; //check a value is 10
+	exit();
+
+	echo $c;
+
+	echo "Moj ma";
+
+
+	--------------------------------------------------
+	isset statement:
+	
+	- isset is use for check value is assign or not if not assign then give not set. It is use only use with 	 if condition.
+
+	$p=20;
+	
+	if(isset($p))
+	{
+		echo $p; //check p value
+	}
+	else
+	{
+		echo "Not Set";
+	}
+
+	----------------------------------------------------
+
+	Date Function:
+
+	- date ('d/m/t');
+	- date ('h:i:s');
+	- date ('h:i:s a');
+	- date('H:i:s'); Capital H for 24 hour time formate
+
+	- mktime --> for find Future and past time find
+	- $futuredate=mktime(0,0,0,date("m")+2,date("d")+2,date("y")+2); // difine future date but add 0,0,0
+	  echo date("d/m/y",$futuredate)."<br/>"; //For Date
+	- $futuretime=mktime(date("H")+3,date("i"),date("s")); //for define future date but add 0,0,0
+	  echo date("H:i:s",$futuretime)."<br/>"; //For Time
+
+	- echo date("d-m-y",strtotime('+2 days'))."<br>"; // add days in date by 'strtotime' Using string    
+	- echo date('h:i:s A',strtotime('+5 hours'))."<br>"; //add 5 Hours
+Array:-
+
+	- Array is collection values
+	- collection of values
+	- Numeric Array
+		- Index auto generate
+		-$nameric=array("a","b","c") --> start from 0,1,2
+		- echo $nameric[2]
+	- Associate Array
+		- Give Key-Value
+	- Multidimensional Array
+		- Array in under array
+
+For print array
+	- for and foreach loop
+
+	  $arr=array("a","b","c");
+	  print_r($arr); --> For print array
+
+	  echo $arr[2];
+
+	- for($i=0;$i<count($arr);$i++)  //count is count total array
+	  {
+		echo $arr[$i]."<br>"
+	  }
+
+
+	-foreach ($arr as $w) --> This use only for array
+	 {
+		echo $w."<br>"
+	 } 
+
+	
+
+Sorting Array:-
+	- sort() - sort arrays in as cending order
+	- rsort() - sort arrays in descending order
+
+	- asort() - sort associative arrays in ascending order, according to the value
+	- arsort() - sort associative arrays in descending order, according to the value
+
+	- ksort() - sort associative arrays in ascending order, according to the key
+	- krsort() - sort associative arrays in descending order, according to the key
+	
+String Function:-
+	- strlen : It find length. it use in enter valid password
+	- str_word_count:- It define count string word like its 2 words string. It find total word. in validation
+	- str_replace:- Lorem is text. replace lorem in tops. case sensitive  //find //replace
+	- str_ireplace:-lorem is text. replace lorem in tops. case insensitive
+	- rand:- It generate random number. Use for OTP.
+	- str_shuffle:- Randomely shuffle all character in a string. Use for captcha.
+	- strtolower:- It convert string in upper to lower character.
+	- strtoupper:- It convert string in lower to upper character
+	- explode:- It convert string to array.
+	- implode:- It convert from array to string.
+	- number_format:- Define number with grouped thousands ans. it convert in proper number format.
+	- md5:- For encryption --> Most use 
+	- sha1:- For encryption
+	- base64_encode() - For Encryption
+	- base64_decode() - For Decryption.
+
+Header Function:-
+	- Header function is inbuilt function in php.
+	- It use for redirect to other file.
+	- PHP header function send a HTTP hearer to a client or browser in raw form.
+	- header('location: file name.php');
+	- header refresh is also redirect in another page but in this we give a time like 5 second.
+	- header("refresh:5; file name.php");
+
+	/*	
+	echo "<script>
+		window.location='wellcome_location.php';
+	</script>";
+	*/
+
+Download:
+	- header(content-type:'application/octect-stream') --> For download any type file
+	- header('content-disposition:attachment;filename="filename";
+	- readfile('filename');
+	
+
+Globals Variables:
+
+	- A Global variable is super global & predefine variable.
+	- A Global variable is a programming language construct.
+	- A variable type that declare outside any function and is accessible to all functions throughout the 	 	  project.
+
+	1) $GLOBALS : We can make variable as local to global & access anywhere. Write in only Capitale. echo 		   $GLOBALS['z']=$x+$y; --> Convert Local to Global.
+
+	 $_SERVER     
+	 $_REQUEST
+	 $_POST
+	 $_GET
+	 $_FILES
+	 $_ENV
+	 $_COOKIE
+	 $_SEASON 
+
+	 method='get' $_GET / $_REQUEST  (Default)
+	 method='post' $_POST / $_REQUEST
+	 use only post method // $_REQUEST --> $_REQUEST is use with both GET and POST. 
+
+	 Method get not use:- 
+	 1) Not secure because data display in URL
+	 2) 100 char size limit
+
+	  
+	$_SESSION:-
+		- Session is a super global variable which strore value in session.
+		- Session are wonderful way to pass variable.
+		- All you need to do is start a session key.
+		- session_strat(); Then all the variable you store within $_SESSION, You can access it form anywhere 	 	  in server.
+		- Default time : 24 minutes (1440 Second).
+		- unset($_SESSION)['session name'] --> Single Session Delete.
+		- session_destroy --> All session Delete.
+
+	$_COOKIE:-   
+ 		- Cookie are small text file loaded from a server to a client Computer store some information 			  regarding the client computer.
+		- So that when the same page from the server is visited by the user, necessary information can be 		  collected from the cookie itself, decreasing the latency to open the page.
+
+		- setcookie('user <-- cookie name',"cookie_name,time") //For Create ,Time set is cookie valid for 		  given time.
+		- setcookie('user <-- cookie name',"cookie name",time()-15) //For Delete
+
+	File Hendling/Upload:-
+		- if($_FILES['file1']['size']>0) //if file not upload then it not show
+		  {   
+			 echo $img=$_FILES['file1']['name'];
+			  
+			 $path='img/upload/'.$img; 	//Give Path
+			 $dup_img=$_FILES['file1']['tmp_name']; //Create Duplicate Image
+			 move_uploaded_file($dup_img,$path); //Save
+		  }
+
+	SQL Injection:
+		- SQL injection is a code injection technique that might destroy your database.
+		- SQL Injection is one of the most common web hacking techniques.
+		- SQL Injection is the placement of malicious code in SQL statements, via web page input.
+		- SQL Injection usually when you ask a user for input, like their username/userid and insted of a 		  name/id the user give you an sql statement that you will unknowingly run on your database.
+
+
+Web Services:
+	What are web services ?
+	- A Web Service is can be defined by following ways:
+ 	- It is a client-server application or application component for communication.
+ 	- The method of communication between two devices over the network.
+ 	- It is a software system for the interoperable machine to machine communication.
+ 	- It is a collection of standards or protocols for exchanging information between
+	- two devices or application.
+	
+	Types of Web Services
+	- There are mainly two types of web services.
+	- web-based/website application using the REST, SOAP, WSDL, and UDDI over the network. For example, Java web 	  service can communicate with .Net application
+
+	1) SOAP Web Services
+	- data transfer in xml files
+	- SOAP stands for Simple Object Access Protocol. It is a XML-based protocol for accessing web
+	  services.
+	- SOAP is a W3C recommendation for communication between two applications.
+	- SOAP is XML based protocol. It is platform independent and language independent. By using SOAP,
+	  you will be able to interact with other programming language application
+
+	2)Restfull Web Services API Application Programming Interface
+	- (API)
+
+	- RESTful Web Services are basically REST Architecture based Web Services. In REST Architecture
+	  everything is a resource.
+	- RESTful web services are lightweight, highly scalable and maintainable and are very commonly
+	  used to create APIs for web-based applications.
+
+	Json_encode & jason_decode func with example ?
+	- $arr=array(“name”=>”Rajesh”, ”age”=>31); arr to json
+	- json={ “name”: “Rajesh” , ”age”:”31”}
+
+
+
+	$users=array("name"=>"KEYUR","email"=>"raj@gmail.com","mobile"=>"124567891");
+
+	print_r($users);
+
+	echo "<br><br><br>";
+
+	echo $json=json_encode($users);
+
+	header("Access-Control-Allow-Origin: *");
+	header("Access-Control-Allow-Headers: *");
+	header("Access-Control-Allow-Methods: *");
+
+	$json=file_get_contents('https://jsonplaceholder.typicode.com/posts');
+
+	$phparr=json_decode($json); // json econvert to arr
+
+
+PROJECT WORK:
+	
+Web-Site Theam:-
+
+
+	- Download
+	- ctrl + f for change .html to .php
+	- Save in .php 
+	- Header & Footer Alg karvanu And set all pages in using include_once
+	- Change Header & Footer Acording Your project
+	- Email: letavod743@linacit.com
+	- password:@yARg8J@ZmuZF7K
+
+
+Admin Panel:-
+	-

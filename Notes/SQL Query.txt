@@ -1,0 +1,47 @@
+insert - insert into tablename columname value ();
+
+------------------------------------------------------------------------
+update - update tablename set columname = 'value' where id='2';
+
+------------------------------------------------------------------------
+delete - delete from tablename where condition like id='2';
+       - alter table tablename drop columnname;
+
+------------------------------------------------------------------------
+select - select * from tablename;
+
+------------------------------------------------------------------------
+select where - select * from tablename WHERE id='2';
+
+------------------------------------------------------------------------
+order by - select * from tablename ORDER BY columname like - 'name'; by default in ascending order
+         - select * from tablename ORDER BY columname like - 'name' DESC; for in descending order
+
+------------------------------------------------------------------------
+select thi join two table - select * from table1 join table2 on  table1.id = table2.cust_id 
+			  - select * from customer join feedback   on   customer.id = feedback.cust_id 
+
+			  - select table1.*,table2.columname from table1 join table2 on table1.id = table2.cust_id
+			  - select feedback.*,customers.name from customer join feedback on customer.id = 				    feedback.cust_id
+
+
+- Left Outer Join
+	  select * from table1 left outer join table2 on table1.uid=table2.uid;
+
+- Right Outer Join
+	  select * from table1 right outer join table2 on table1.uid=table2.uid;
+
+- Full join
+	  select * from table1 full join table2;
+	  select * from customer full join feedback;
+
+
+------------------------------------------------------------------------
+select thi join three table - select * from table1 join table2 on table1.cust_id=table2.id join table3 on 				      table1.prod_id=table3.prod_id
+			   - select * from order join customer on order.cust_id=customer.id join product on 				      order.prod_id=product.prod_id
+
+
+------------------------------------------------------------------------
+like operator - select * from tablename WHERE columname like name LIKE 'a%'; //It show only start with ‘j’ name
+	      - SELECT * FROM customer WHERE name LIKE '%l'; ; //It show only end with ‘L’
+	      - SELECT * FROM customer WHERE name LIKE '%l%'; //It show where ‘L’ in name or anywhere

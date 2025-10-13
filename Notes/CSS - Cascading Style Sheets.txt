@@ -1,0 +1,73 @@
+                                    CSS - Cascading Style Sheets
+
+
+Css describe how HTML elements/tag are to be displayed on screen, paper or in other media.
+
+CSS saves a lot of work. It can control the layout of multiple web pages all at once.
+
+syntax:
+
+{
+	color:"red";
+	background-color:"yellow";
+}
+
+External stylesheets are stored in CSS files
+
+3 Types of CSS
+
+1) Inline CSS //inline css apply on particular element <p style=property:value>
+2) Internal Css
+3) External Css 
+
+
+1) Inline CSS
+
+For one line -- <p style=property:value> ex. <h1 style="color:red;background-color:yellow;text-align:center">Hi,I am HTML 
+
+2) Internal CSS
+
+h1,h2,h3{
+ color:red;
+ backgrond-color:yellow;
+ text-align:center;
+}
+
+.bluep{
+ color:white;
+ backgrond-color:yellow;
+ text-align:left;
+}
+.upper{
+ text-transform:uppercase;
+}
+#greenp{
+ color:white;
+ backgrond-color:yellow;
+ text-align:right;
+}
+
+<p class="bluep"> Hi i am blue</p>
+<p id="greenp"> Hi i am green</p>
+
+3) External CSS
+<link href="style.css" rel="stylesheet">
+
+make style.css file then link in html page
+
+
+
+
+CSS Border:
+	-p.dotted {border-style: dotted;}
+	-color: p.one {
+  			border-style: solid;
+  			border-color: red; //border color
+			border-radius: 5px; //for round border
+		} 
+	-<div style="color:white;"> //for give in tag text color.
+List type:
+	-ul.a {
+  		list-style-type: circle;
+	   }
+

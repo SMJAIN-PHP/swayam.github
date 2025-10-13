@@ -1,0 +1,150 @@
+LIST in HTML:
+
+
+<span></span> -- for color text in middle of line
+<span style="color:red">
+
+for join rows:
+	<td rowspan="2">4</td>
+        <td rowspan="2">Ket</td>
+        <td rowspan="2">21</td>
+
+for join columns:
+<td colspan="4" align="center">The End</td>
+
+
+hr rule:
+<hr style="width:75%;margin:auto;">
+
+Unorder list
+order list
+
+
+<ul>  --> Unorder List
+
+	<li>Coffee</li>
+	<li>Tea</li>
+	<li>Milk</li>
+
+</ul>
+
+<ol>  --> Order List
+
+	<li>Coffee</li>
+	<li>Tea</li>
+	<li>Milk</li>
+
+</ol>
+
+<ul type="square">  --> Unorder List    square for square bullets.
+
+	<li>Coffee</li>
+	<li>Tea</li>
+	<li>Milk</li>
+
+</ul>
+
+<ol type="a,A,i-for roman">  --> Order List   a show a,b,c  and A show A,B,C.
+
+	<li>Coffee</li>
+	<li>Tea</li>
+	<li>Milk</li>
+
+</ol>
+
+
+List ni ander pan list banai sakay ene nested list kevay che. Like this....
+<ol>  --> Order List
+
+	<li>Coffee</li>
+	<li>Tea</li>
+		<ol>  --> Order List
+
+		<li>Coffee</li>
+		<li>Tea</li>
+		<li>Milk</li>
+
+		</ol>
+
+	<li>Milk</li>
+
+</ol>
+
+Defination List:
+
+dl - Define a definition list
+dt - Define a definition term
+dd - define a definition description
+
+<dl>
+	<dt>tea</dt> --> This use one time
+	<dd>Hot tea<dd>
+	<dd>cold tea<dd>
+</dl>
+
+
+
+Box banava mate:
+
+<h1> align="center"Charbhja Sandwich </h1>
+<fieldset>
+
+<div style="width:50%; float:left>
+	<dl>
+		<dt>tea</dt> --> This use one time
+		<dd>Hot tea<dd>
+		<dd>cold tea<dd>
+	</dl>
+
+</div>
+
+</fieldset>
+
+
+Daily Task:-
+text formatting tag testing
+fieldset use kari ne profile page namavanu
+ek menu card
+
+
+<html>
+	<body>
+		<h1>Text Formatting Tags</h1>
+		<h2>Text Formatting Tags</h2>
+		<b>Jil Patel</b>
+		<br>
+		<i>Jil Patel</i>
+		<br>
+		<u>Jil Patel</u>
+		<br>
+		<strong>Jil Patel using strong</strong> for bold
+		<br>
+		<em>Jil Patel using emphasized</em> for italic
+		<br>
+		<b>Jil <mark>Patel</mark> Using mark</b>
+		<br>
+		<b>Jil </b><del>jil</del> Patel</b> it create line on word
+		<br> 
+		<small>Jil Patel Using Small</small>
+		<br>
+		<big>Jil Patel Using Big</big>
+		<br>
+		<b>Jil Patel<sub>Jil Patel Using sub</sub> </b>
+		<br>
+		<b>Jil Patel<sup>Jil Patel Using sup</sup> </b>
+		<br>
+		<p>About us - ADOCMEDI is a website where patients, <span style="color:red">doctors - use span</span> 		and pharma people all come at one platform to make their life more easier.</p>
+		<br>
+		<pre>
+			Jil Patel
+				Jil Patel
+			Using Pre Tag
+		</pre>
+		
+		<a href="https://www.facebook.com/">
+			<img src="logo.png" height="100px width="100px">
+		<a/>
+	</body>
+
+</html>
+

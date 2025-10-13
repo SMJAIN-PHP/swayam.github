@@ -1,0 +1,630 @@
+                                            Advance PHP
+
+
+From php5 you can also write php code in an object-oriented style.
+
+OOP stands for object-oriented programming.
+
+Procedural programming is about writing procedural or functions or function that perform operation on the data.
+
+While object-oriented programming is about creating object that contain both data and function.
+
+Object-oriented programming has several advantages over procedural programming.
+
+OOP is faster and easier to execute.
+OOP provide a clear structure for the programs
+OOP provide securities
+OOP Helps to keep the PHP code DRY "Don't Repeat yourself and makes the code easier to maintain, modify and debug" 
+OOP makes it possible to create full reusable application with less code and shorter development time.
+
+
+Example:
+
+Class ==> Fruite/car
+
+Object ==> apple,banana,orange / Volvo,Audi,Protected
+
+
+
+OOPS Feature:
+
+Class
+Object
+Encapsulation
+Inharitance / Reusability ==> Extends
+Access Modifire / Visibility ==> Public, Private, Protected
+Polymorphisam / Overloading / Overriding
+
+
+
+Class: Define a Class
+
+
+Making Group of data member(variable) and member function that called class.
+A Class is defined by using the class keyword, followed by the name of the class and a pair or curly braces({}).
+All its properties and method go inside the bracest. 
+
+Define Objects:
+
+
+Classes are nothing without object. we can create multiple objects from a class, Each object has all the properties 
+and method defined in the class, But They will have different property value.
+
+Object of a class are created using the new keyword.
+
+->inheritance:
+
+5 Type:
+
+Single level
+Multi level
+Multiple level --> it is not working in php
+Hierarchical
+Hybrid
+
+
+single level
+class a
+{
+	
+}
+class b extend a
+{
+	
+}
+
+obj: b
+
+--------------------
+Multi-level 
+class a
+{
+	
+}
+class b extend a
+{
+	
+}
+class c extends b
+{
+	
+}
+
+obj: c
+--------------------
+
+Multiple inheritance --> Not possible in PHP
+class a
+{
+	
+}
+
+class b 
+{
+	
+}
+class c extends a,b     // class c: a,b
+{
+	
+}
+
+obj: c // but Multiple Inheritance not possible in php by extend / only one class extend
+--------------------
+
+Hierarchical Inheritance.
+class a
+{
+	
+}
+class b extends a
+{
+	
+}
+class c extends a  
+{
+	
+}
+
+obj : b and c
+--------------------
+
+Hybrid Inheritance.
+	- Mix of any two 
+class a
+{
+	
+}
+class b extend a
+{
+	
+}
+class c extends b
+{
+	
+}
+class d extends a
+{
+	
+}
+--------------------
+
+
+For call any member variable use 'this->'
+
+For join one class to another class use 'extends'
+
+class model
+{
+	public $a=10;
+	public $b=10;
+	function sum();
+	{
+		echo $sum=$this->a+$this->b;
+	}
+}
+class control extends model
+{
+	function multi()
+	{
+		$this->sum();
+		Echo $this->a*$this->b;
+	}
+}
+$obj=new control;
+$obj->multi();
+
+----------------------------------------------------------------
+Access Modifier:
+
+Public -> Available in class and outside class.
+Private -> Available only Own class.
+Protected -> Available only in own class and inherit class.
+
+----------------------------------------------------------------
+
+polymorphism:
+
+This word is can from Greek word poly and morphism.
+Poly-> many and morphism-> property which help us to assign more then one property.
+
+2 Type:
+
+Overriding :  When same methods defined in parents and child class with same signature
+Overloading : Same method name with different parameters. PHP doesn't support Method Overloading concept
+
+class abc
+{
+	function sum ($a,$b)
+	{
+		echo $a+$b."<br>";
+	}
+}
+class xyz extends abc
+{
+	function sum($a,$b)
+	{
+		abc::sum(5,6);
+		echo $a*$b;
+	}
+}
+$obj=new xyz;
+$obj->sum(5,10);
+
+------------------------------------------------------------------------------------------------------------
+
+Advance OOPs:-
+
+Advance Varible:
+
+Static Varible:
+declare by static keyword
+public visibility
+Call by ':: - Scope Resolution'
+call without object by(::) Scope Resolution
+
+
+Static properties can be called directly without creating an instance(object) of a class.
+Static properties are declare with the static keyword to access a static property use the class name, double colon(::) and the property name: visibility all time public must.
+
+class abc
+{
+	public static $my_static="I Am Static";
+	public $simple_var="Hello";
+
+	public function static_foo()
+	{
+		echo $this->simple_var;
+		echo abc::$my_static
+	}
+}
+class xyz extend abc 
+{
+	public function static_bar()
+	{
+		echo $this->simple_var;
+		echo abc ::$my_static;
+	}
+	
+}
+$obj=new xyz;
+echo $obj->simple
+
+------------------------------------------------------------------------------------------------------------
+
+Constant Variable:
+
+const my_const="const_value";
+
+Declared by const keyword
+Unchangeable
+Public Visibility
+call by ':: - Scope Resolution'
+call without object
+
+Constants are one type of variable which we can define for any class with keyword const.
+Value of these variables cannot be changed anyhow after assigning.
+Class constants are different from normal variables, as we do not need $ to declare the class constants.
+If we are inside the class then values of the constants can be get using self keyword, but accessing the value outside the class you have to use Scope Resolution Operator.
+we don't need to take object for const class we can call without object visibility all time public must.
+
+class abc
+{
+	public const my_const="const_value";   // in static keyword use in static variable use like $my_static
+	
+	function display()
+	{
+		//echo self::my_const;  // foo::$my_static;
+		echo abc::my_const;
+	}
+}
+class xyz extends abc
+{
+	public function display2()
+	{
+		//echo parent::$my_const;
+		echo abc::my_const;
+	}
+}
+
+ echo abc::my_const;  // we can call without object
+
+------------------------------------------------------------------------------------------------------------
+
+Magic Function:
+
+Magic Method: Built in function/ Predefined
+
+Magic Methods are special method Which override PHP's default's action when certain action are performed on an object.
+
+_construct(), //When obj created then automatically call
+_destruct(), //obj destroy call
+_call()
+_get()
+_set()
+_isset()
+_unset()
+_sleep()
+_wakeup()
+_serialize()
+_unserialize()
+_toString()
+_invoke()
+_set_state()
+_clone()
+_debugInfo()
+
+-----------------------------
+_construct():-
+
+_construct() Call auto & first call
+
+A constructor allows you to initialize an object's properties upon creation of the object. Also called magic function.
+
+If you create a _construct() function, PHP will automatically call this function when you create an object from a class.
+
+Notice that the construct function start with two underscores(__)
+
+We see in the example below, that using a constructor saves us from calling the set_name() method which reduces the amount of code:
+
+
+__destruct()    call auto & last call
+
+destroy object of class
+call in last 
+
+<?php
+class abc
+{
+	function simple()
+	{
+		echo "Simple Function <br>";
+	}
+	function __construct()
+	{
+		echo "Magic function run auto mantically<br>";
+	}
+	function demo()
+	{
+		$this->simple(); // normal function call by $this->
+		abc::__construct(); // __construct function call by '::(scopeResolution)'
+	}
+}
+$obj= new abc;
+$obj->demo();
+?>
+
+-----------------------------
+_destruct():
+
+In PHP, destructor method is named as __destruct. 
+During shutdown sequence too, objects will be destroyed. 
+Destructor method doesn't take any arguments, neither does it return any data type.
+
+<?php
+class a
+{
+    public function __destruct() // object() destroy & call in last
+    {
+        echo "I'm dead now <br>";
+    }
+    public function __construct()  // call first
+    {
+        echo "I'm alive! <br>";    
+    }
+    public function display()  
+    {
+        echo "I'm display now <br>";
+    }
+}
+
+$a = new a();
+$a->display();
+?>
+
+------------------------------------------------------------------------------------------------------------
+
+Advance Class:
+
+PHP  introduces the final keyword, which prevents child classes from overriding a method by prefixing the definition with final. 
+If the class itself is being defined final then it cannot be extended.
+
+<?php
+final class a
+{
+	function test()
+	{
+		echo "This is final method";
+	}
+}
+class b extends a  // extend not possible for final class
+{
+	function test()
+	{
+	 	echo "This is final method of b class";
+    	}
+}
+?>
+
+------------------------------------------------------------------------------------------------------------
+
+Trait:
+
+PHP 5 only supports single inheritance: 
+
+a child class can inherit only from one single parent.
+So, what if a class needs to inherit multiple behaviors? 
+
+OOP traits solve this problem.
+
+Traits are declared with the trait keyword: as class.
+To use a trait in a class, use the 'use' keyword: // for inheritance
+Traits are used to declare methods that can be used in multiple classes. 
+
+Traits can have methods and abstract methods that can be used in multiple classes, and the methods can have any access modifier (public, private, or protected).
+
+
+<?php
+trait first  // use trait insted of class
+{
+	function method1()
+	{
+		echo "This is method1.<br>";
+	}
+    	function method2()
+	{
+		echo "This is method2";
+	}
+}
+class sample 
+{
+	use first;  // here use word ('use') for inheritance of class first
+}
+$obj= new sample;  //make obj of sample
+$obj->method1();   //call method
+$obj->method2();
+?>
+
+For Multiple Trait:
+
+	-useful in reduce reusable code and remove inheritance multiple
+
+<?php
+trait abc
+{
+	public function test()
+	{
+		echo "This is test method <br>";
+	}
+}
+trait xyz
+{
+	public function sample()
+	{
+		echo "this is sample method <br>";
+	}
+}
+class pqr  
+{
+	use abc,xyz;  // multiple inherit 
+}
+
+$obj=new pqr();  //make obj of pqr
+$obj->test();   //call method
+$obj->sample();
+
+?>
+
+------------------------------------------------------------------------------------------------------------
+
+Abstrect Class:
+
+An abstract class or method is defined with the abstract keyword:
+An object of an abstract class can't be made.
+An abstract class is a class that contains at least one abstract method. 
+
+An abstract method is a method that is declared, but not implemented in the code.
+
+When inheriting from an abstract class, the child class method must be defined with the same name, and the same or a less restricted access modifier. 
+So, if the abstract method is defined as protected, the child class method must be defined as either protected or public, but not private.
+
+
+<?php
+abstract class A  // define abstract before class declare in main class
+{
+	abstract function foo();   // alwayas use abstract method and also use simple method 
+				   // if it interfave 	method than foo(); (;) must othrwise not
+	  
+	function simple()           // also use simple method
+	{
+		echo "This is Simple method";
+	}
+}
+class B extends A
+{
+	function foo()     // always listern abstract method in main class must used in extend class like B & C
+	{
+		echo "This is B class foo method";
+	}
+	
+}
+class C extends A
+{
+	function foo()   // always listern abstract method in main class must used in extend class like B & C
+	{
+		echo "This is C class foo method";
+	}
+}
+$c=new c();    // call all method by obj
+?>
+
+------------------------------------------------------------------------------------------------------------
+
+
+Interface:
+
+Interfaces are declared with the interface keyword:
+Interfaces are characterized similarly as a class, however, only the interface keyword replaces the class phrase in the declaration and without any of the methods having their contents defined.
+Interfaces allow you to specify what methods a class should implement.
+
+PHP - Interfaces vs. Abstract Classes
+
+Interfaces are similar to abstract classes. 
+The difference between interfaces and abstract classes are:-
+Interfaces cannot have properties, while abstract classes can All interface methods must be public, while abstract class methods is public or protected All methods in an interface are abstract, so they cannot be implemented in code and the abstract keyword is not necessary
+
+<?php
+interface A1    // use interface instead of class
+{
+	function foo(); // if it interface method than foo(); (;) must otherwise not
+}
+interface A2
+{
+	function bar();
+}
+class B implements A1,A2  // use 'implements' word for extend interface
+{
+	 function foo() 
+	 {
+		 echo "This is A1 INTERFACE foo.<br>";
+	 }
+	 
+	 function bar() 
+	 {
+		 echo "This is A2 INTERFACE bar.<br>";
+	 }
+    
+}
+  
+$obj=new B;
+$obj->foo();
+
+?>
+
+------------------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------
+Step 1: Website ma controller page banavanu
+Step 2: Controller page ma constructor and switch case banavanu ane ema page hoy etla case banavanaa
+Step 3: case je banaya name na banaya e name menu ma aapvana like- /index to manu ma pan heref index.
+	design nai aave 
+Step 4: for solution make configure file banavani '.htaccess' name ni file banavani. je background ma auto 	controller call karse. Ane design pan aavse.
+
+
+Step 5: model page ne include karvanu control page ma. include_once('../website/model.php');
+Step 6: ane pachi constructor call karvanu scopresolution thi. --> model::__construct(); 
+Step 7: admin panel ma pan same j karvanu. 
+Step 8: admin panel ma control.php page banavanu ane .htaccess file for configuration.
+
+model ma insert nu function banavanu.
+form ne proper set karo. method nakhvani post. form ma name ane table ni column ni name same rakhvanu.
+note: Jyare input file enctype="multipart/form-data"
+
+
+
+---------------------------------------------------------------------
+For session:-
+in control
+create session - session start;
+@_SESSION['name'];
+
+if login ma data match thay to session 
+
+validation:
+
+session hoy to sign up sivay nu
+
+ane na hoy to signup vadu dekhavu joiye
+
+session hoy to name print karavanu
+
+session hoy to page khulvu joie
+
+session na hoy to dashboard na khulvu joie
+
+session hoy to login and signup na khulvu joie
+
+lagout no case banavano ane ema session destroy karai do.
+
+
+
+
+
+---------------------------------------------------------------------
+
+MVC - Model View Control 
+
+MVC is abbreviated as model view controller is a design pattern created for developing applications specifically web applications.
+
+As the name suggests, it has three major parts. The traditional software design pattern work in an "input - Process - Output" pattern whereas MVC works as "Controllers - Model - View" approach. with the emergence of the MVC model, creation of application takes different aspects individually into consideration. These aspect of the application are:
+
+Let us discuss the three components of MVC in brief:
+
+Model: The Model enclose the clean application relation data. But the model does not deal with any logic about how to     	present the data.
+
+	- MODEL CONNECTION WITH Database + Logic (curd insert/update/delete)
+
+Controller: The Controller is in betweed the Model and the view element. It listens to all the incident and actions 	    	    triggered in the view and performs an appropriate response back to the event.  
+
+View: The View element is used for presenting the data of the model to the user. 
+      This element deals with how to link up with the model's data but doesn't provide any logic regarding what this         	data all about or how users can use these data.

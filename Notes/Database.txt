@@ -1,0 +1,273 @@
+Database:-
+
+What is DBMS & RDBMS and also Difference ?
+	- Database management system is a software which is used to manage the database. For example: MySQL, 	  	  Oracle, etc.. are a very popular commercial database which is used in different applications.
+	- DBMS provides an interface to perform various operations like database creation, storing data in it, 	  	  updating data, creating a table in the database and a lot more.
+	- It provides protection and security to the database. In the case of multiple users, it also maintains 	  data consistency.
+
+
+Rdbms:- 
+
+	- RDBMS stands for Relational Database Management Systems..
+	- All modern database management systems like SQL, MS SQL Server, IBM DB2, ORACLE, My-SQL and Microsoft		  Access are based on RDBMS.
+	- It is called Relational Database Management System (RDBMS) because it is based on relational model 	    	  introduced by E.F. Codd.
+	- DBMS + E.F. Codd 12 Rules =  RDBMS.
+
+XAMPP:-
+X   CROSS PLATFORM
+A   APACHE SERVER
+M   MY SQL
+P   PHP
+P   PERL
+
+What is SQL & TYPES?
+	- SQL stands for Structured Query Language
+	- SQL lets you access and manipulate databases
+
+
+ 4 Types 
+	- DDL Data Definition Language -----> 4 Commands  create / alter / drop / truncate
+	- DML (Date Manipulation Language) ---> insert/Delete/Update
+	- DQL  (Data Query Language) ---> Select
+	- TCL (Transaction Control Language) ---> rollback / commit
+	- It is used to define the structure of databases and tables. 
+	- We can create, modify or delete the structure of tables.
+
+1. DDL (Data Definition Language)
+
+4 Commands  create / alter / drop / truncate
+
+Create:-
+
+	- create database shop
+	- create table customers(id int PRIMARY key AUTO_INCREMENT, cust_name varchar(100),user_name varchar(100), 	  password varchar(100),email varchar(100), mob bigint(11), address varchar(255), pincode bigint(11))
+	- Foreign Key:
+		- 
+
+Alter:-
+	- For add column, delete...
+	- ALTER TABLE customer add(gender varchar(255)); //for add new column
+	- ALTER TABLE customer CHANGE 'phone' 'mobile_no bigint(11)'; //for change column name
+	- ALTER TABLE customer drop 'mobile_no'; //for delete specific column
+
+Drop:-
+	- DROP DATABASE customer; //for delete database
+	- DROP TABLE customer;  //for delete table
+	- ALTER TABLE customer drop 'mobile_no'; //for delete specific column
+
+Truncate:-
+	- truncate table customer; //for delete table data
+
+2. DML (Date Manipulation Language)
+
+3 Commands insert/Delete/Update
+
+Insert:- 
+	- INSERT INTO customer(id, name, email, password, mobile_no) VALUES 				  	  	  (1,"Jil","jp@gmail.com",'jil23554',9876543210),
+ 	  (2,"Dhruvin","dp@gmail.com",'dp3554',9876543211),
+ 	  (3,"Zainil","zp@gmail.com",'zp23554',9876543215);
+
+Update:- 
+	- UPDATE customer set name="jil patel" where id=1;
+
+Delete:-
+	- Delete from customer where id=2;
+
+3. DQL  (Data Query Language)    
+	- Select 
+	- Select Description: This will select  ‘n‘ columns from the table. Or To select all records from the 	 	  database.
+
+	
+
+	- Select * from customer      // get all data with all column 
+	- Select id, name from customer  // get all data with particular column
+
+	- Select * from customer where id=2  
+	- Select id, name from customer where id=2  
+
+4. TCL (Transaction Control Language)
+	- rollback / commit
+
+	- Rollback :  ctl+z  undo 
+	- commit : ctl+s  save as    
+
+
+
+JOINTS:-
+
+A JOIN clause is used to combine row from two or more tables, based on a releted column between them.
+
+Types of join:3 Types
+1) inner Join/ Join ==> This is Main.
+2) outer join ==> Left Outer Join/Right Outer Join/Full Join
+3) cross join 
+
+1)  Inner Join/Join  ==> This is Main.- Very Important 
+	- customer           	 	Feedabck        		                       
+	   cust_id            	PK	fed_id    PK   		  
+	   cust_name        		cust_id   FK    		  
+	   pass		  		msg	
+
+
+	- select * from customer join feedback   on   customer.id = feedback.cust_id 
+
+	- select feedback.*,customers.name from customer join feedback   on   customer.id = feedback.cust_id
+
+	customer           	 	order         		  product  
+                    
+	cust_id            		 order_id       	  prod_id
+	cust_name        		 cust_id       		  pro_name 
+	pass		  	 	 prod_id		  pro_price 
+
+
+	- select * from order join customer on order.cust_id=customer.id 
+	  join product on order.prod_id=product.prod_id
+
+2) Outer Join
+	- Left Outer Join
+	  select * from user_tbl    left outer join     feedback on user_tbl.uid=feedback.uid
+
+	- Right Outer Join
+	  select * from user_tbl right outer join feedback on user_tbl.uid=feedback.uid
+
+	- Full join
+	  select * from user_tbl full join feedback
+	  select * from customer full join feedback
+
+
+3) Cross Join
+	- select * from user_tbl cross join feedback
+	- select * from customer cross join feedback
+
+
+
+Distinct:-
+
+	- The SELECT DISTINCT statement is used to return only distinct (different) values.
+	- SELECT DISTINCT Country FROM Customers;
+
+ORDER BY:-
+	- The ORDER BY keyword is used to sort the result-set in ascending or descending order.
+	- SELECT * FROM Products ORDER BY Price;
+
+AND Operator:- 
+	- The WHERE clause can contain one or many AND operators.
+
+	- The AND operator is used to filter records based on more than one condition, like if you want to return 	  all customers from Spain that starts with the letter 'G':
+	- SELECT * FROM Customers WHERE Country = 'Spain' AND CustomerName LIKE 'G%';
+
+OR Operator:- 
+	- The WHERE clause can contain one or more OR operators.
+
+	- The OR operator is used to filter records based on more than one condition, like if you want to return 	  all customers from Germany but also those from Spain:
+	- SELECT * FROM Customers WHERE Country = 'Germany' OR Country = 'Spain';
+
+NOT Operator:- 
+	- The NOT operator is used in combination with other operators to give the opposite result, also called 	  the negative result.
+
+	- In the select statement below we want to return all customers that are NOT from Spain:
+	- SELECT * FROM Customers WHERE NOT Country = 'Spain';
+
+Limit:- 
+
+	- SELECT column_name(s) FROM table_name WHERE condition LIMIT number;
+	- SELECT * FROM Customers LIMIT 3;
+
+Aggregate Functions:-
+	- An aggregate function is a function that performs a calculation on a set of values, and returns a single 	  value.
+
+	- Aggregate functions are often used with the GROUP BY clause of the SELECT statement. The GROUP BY clause 	  splits the result-set into groups of values and the aggregate function can be used to return a single 	  value for each group.
+	- MIN() - returns the smallest value within the selected column
+	- MAX() - returns the largest value within the selected column
+	- COUNT() - returns the number of rows in a set
+	- SUM() - returns the total sum of a numerical column
+	- AVG() - returns the average value of a numerical column
+	- SELECT COUNT(name) FROM customer;
+	- SELECT SUM(price) FROM customer;
+
+LIKE Operator:-
+	- The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.
+
+	- There are two wildcards often used in conjunction with the LIKE operator:
+
+ 	- The percent sign % represents zero, one, or multiple characters
+ 	- The underscore sign _ represents one, single character
+	- For Use Search
+
+Index:-
+	- The CREATE INDEX statement is used to create indexes in tables.Indexes are used to retrieve data from 	  the database more quickly than otherwise. The users cannot see the indexes, they are just used to speed 	  up searches/queries 100 times faster.  (SBI BANK   find Account Number)
+	- Type : 2 type
+	- Simple:   on only one table column
+	- Composite : on more than 1 column in table
+	- Syntex:CREATE INDEX custindex ON customer(cus_id,mobile)
+	- CREATE INDEX cust_index ON customer(id,mobile_no)
+
+Views  (Security Concept/ sub menu virtual table)  Exa: (BANK DUPLICATE TABLE):-
+	-In SQL, a view is a virtual table based on the result-set of an SQL statement.
+	-A view contains rows and columns, just like a real table. The fields in a view are fields from one or 	 	 more real tables in the database.
+	-You can add SQL functions, WHERE, and JOIN statements to a view and present the data as if the data were 	 coming from one single table.
+	-CREATE VIEW customer_view AS SELECT cus_id,cust_name,mobile,address,pincode FROM customer
+	-CREATE VIEW customer_view AS SELECT id,mobile_no,email_id FROM customer;
+
+Cursor
+	-A cursor is a temporary work area created in the system memory when a SQL 
+	 statement is executed
+	-Two Type :
+	-Implicit : DML statement insert/update/delete/   --> Select only one row--When only one result show for 	 multiple use explicit
+	-Explicit : Select more than one row data
+
+Procedure :
+	-A stored procedure is a prepared SQL code that you can save, so the code 
+	 can be reused over and over again. So if you have an SQL query that you write over 
+	 and over again, save it as a stored procedure, and then just call it to execute it.
+	-Write delimiter // compulsory 
+	-Create procedure insert_cust(
+	 In cust_name varchar(255),
+	 In user_name varchar(255),
+	 In password varchar(255),
+	 In email varchar(255),
+	 In mobile bigint(11),
+	 in address varchar(255),
+	 in pincode bigint(11)
+	 )
+	 Begin
+	 insert into customer(cust_name,user_name,password,email,mobile,address,pincode) 	 	 	 	 values(cust_name,user_name,password,email,mobile,address,pincode);
+	 End   
+	-CREATE PROCEDURE insert_cus(
+    	 IN n_name varchar(255),
+    	 IN n_mobile_no bigint(11),
+    	 IN n_email_id varchar(255)
+    	 )
+    	 BEGIN
+        	insert into customer(name,mobile_no,email_id) values(name,mobile_no,email_id);
+    	 END
+	-CALL insert_cus("jay",'1234567891',"jay@gmail.com");
+Trigger :
+	-A MySQL trigger is a stored program (with queries) which is executed automatically to respond to a 	 	 specific event such as insertion, updation or deletion occurring in a table.
+	-BEFORE INSERT – activated before data is inserted into the table.
+	-AFTER INSERT- activated after data is inserted into the table.
+	-BEFORE UPDATE – activated before data in the table is updated.
+	-AFTER UPDATE - activated after data in the table is updated.
+	-BEFORE DELETE – activated before data is removed from the table.
+	-AFTER DELETE – activated after data is removed from the table
+
+	=>create table reg_log( uid int(100),unm varchar(100),pass varchar(100),gen varchar(100),lag 	 	 	  varchar(100),cid varchar(100),img varchar(100),status varchar(100),entry_date_time datetime);
+	=>CREATE TRIGGER insert_trigger_reg BEFORE INSERT ON reg FOR EACH ROW
+	 BEGIN
+	insert into reg_log(uid,unm,pass,gen,lag,cid,img,status,Entry_date_time) values 	(new.uid,new.unm,new.pass,new.gen,new.lag,new.cid,new.img,new.status,now());
+	END//
+
+	-create table customer_log( name varchar(255),mobile_no bigint(11),email_id varchar(255),entry_date_time 	 datetime);
+	 CREATE TRIGGER insert_trigger_cuslog BEFORE INSERT ON customer_log FOR EACH ROW
+	 BEGIN
+		insert into customer_log(name,mobile_no,email_id,Entry_date_time) values 			 	  	(new.name,new.mobile_no,new.email_id,now());
+	 END//
+	-CALL insert_cus("jay patel",'123456781',"jayp@gmail.com");
+
+
+Delete Trigger:
+	- create table customer_delete_log( name varchar(255),mobile_no bigint(11),email_id 	varchar(255),entry_date_time  datetime);
+	CREATE TRIGGER delete_trigger_cuslog BEFORE DELETE ON customer FOR EACH ROW
+	 BEGIN
+	insert into customer_delete_log(name,mobile_no,email_id,Entry_date_time) values 	(old.name,old.mobile_no,old.email_id,now());
+	 END//
