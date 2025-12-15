@@ -68,6 +68,33 @@
                         </div>
                     </div>
                     <button class="btn btn-primary btn-md-square d-flex flex-shrink-0 mb-3 mb-lg-0 rounded-circle me-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search"></i></button>
-                    <a href="web_login" class="btn btn-primary rounded-pill d-inline-flex flex-shrink-0 py-2 px-4">LOG-IN</a>
+                        
+                    @if(session()->has('cid'))
+                            <div class="nav-item dropdown ms-3">
+                                <a class="nav-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" href="#">
+                                    <img class="rounded-circle me-2 border border-primary shadow-sm"
+                                        src="{{ asset('upload/customer/' . Session()->get('image')) }}"
+                                        alt="User" width="36" height="36" />
+                                    <span class="fw-bold text">{{ Session()->get('cname') }}</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end shadow-lg rounded-3 p-2">
+                                    <a href="my_profile" class="dropdown-item d-flex align-items-center">
+                                        <i class="bi bi-person-circle me-2 text-primary"></i> My Profile
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="/web_logout" class="dropdown-item d-flex align-items-center text-danger">
+                                        <i class="bi bi-box-arrow-right me-2"></i> Log Out
+                                    </a>
+                                </div>
+                            </div>
+                            @else
+                            <a href="web_login" class="btn btn-primary rounded-pill d-inline-flex flex-shrink-0 py-2 px-4 ms-3">
+                                LOG-IN
+                            </a>
+                            @endif
+
+
+                  
+                    
                 </div>
             </nav>

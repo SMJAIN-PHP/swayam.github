@@ -34,5 +34,8 @@
       <!-- custom js -->
       <script src="<?php echo url('admin/js/custom.js')?>"></script>
       <script src="<?php echo url('admin/js/chart_custom_style1.js')?>"></script>
+
+      @include('sweetalert::alert')
+
    </body>
 </html>

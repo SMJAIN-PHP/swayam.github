@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -31,6 +33,9 @@
        <!-- font-awesome -->
       <link rel="stylesheet" href="<?php echo url('admin/css/font-awesome.min.css')?>">
        <link rel="stylesheet" href="<?php echo url('admin/css/font-awesome.css')?>">
+        <!-- sweet alert -->
+       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
      
       <!--[if lt IE 9]>
@@ -52,11 +57,18 @@
                   <div class="sidebar_user_info">
                      <div class="icon_setting"></div>
                      <div class="user_profle_side">
+                         @if(session()->has('aid'))
                         <div class="user_img"><img class="img-responsive" src="<?php echo url('admin/images/layout_img/user_img.jpg')?>" alt="#" /></div>
                         <div class="user_info">
-                           <h6>John David</h6>
-                           <p><span class="online_animation"></span> Online</p>
+                           
+                            <h6>{{Session()->get('aname')}}</h6>
+                            <p><span class="online_animation"></span> Online</p>
+                           
+
+                           
+                           
                         </div>
+                         @endif
                      </div>
                   </div>
                </div>
@@ -80,14 +92,14 @@
                      </li>
                             -->
                      <li>
-                              <a href="dashboard"><i class="fa fa-dashboard yellow_color"> </i><span>Dashboard</span></a>
+                              <a href="/dashboard"><i class="fa fa-dashboard yellow_color"> </i><span>Dashboard</span></a>
                            </li>
                
                      <li>
                         <a href="#Category" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-diamond purple_color"></i> <span>Category</span></a>
                         <ul class="collapse list-unstyled" id="Category">
-                           <li><a href="manage_category">> <span>Manage Category</span></a></li>
-                           <li><a href="add_category">> <span>Add Category</span></a></li>
+                           <li><a href="/manage_category">> <span>Manage Category</span></a></li>
+                           <li><a href="/add_category">> <span>Add Category</span></a></li>
                            
                         </ul>
                      </li>
@@ -97,26 +109,26 @@
                      <li>
                         <a href="#Product" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-cubes purple_color"></i> <span>Product</span></a>
                         <ul class="collapse list-unstyled" id="Product">
-                           <li><a href="manage_product">> <span>Manage product</span></a></li>
-                           <li><a href="add_product">> <span>Add product</span></a></li>
+                           <li><a href="/manage_product">> <span>Manage product</span></a></li>
+                           <li><a href="/add_product">> <span>Add product</span></a></li>
                           
                         </ul>
                      </li>
 
-                       <li><a href="customer"><i class="fa fa-group "> </i><span>Customer</span></a></li>
+                       <li><a href="/customer"><i class="fa fa-group "> </i><span>Customer</span></a></li>
 
                     
                      <li>
 
-                        <li><a href="order"><i class="fa fa-shopping-cart purple_color"> </i><span>Order</span></a></li>
+                        <li><a href="/order"><i class="fa fa-shopping-cart purple_color"> </i><span>Order</span></a></li>
 
                     
                      <li>
-                        <a href="contact"><i class="fa fa-phone red_color"></i> <span>Contact</span></a>
+                        <a href="/contact"><i class="fa fa-phone red_color"></i> <span>Contact</span></a>
                      </li>
 
                       <li>
-                        <a href="feedback"><i class="fa fa-envelope-o red_color"></i> <span>feedback</span></a>
+                        <a href="/feedback"><i class="fa fa-envelope-o red_color"></i> <span>feedback</span></a>
                      </li>
 
                       <!--
@@ -176,14 +188,20 @@
                               </ul>
 
 
+
+                             
+
                               <ul class="user_profile_dd">
                                  <li>
-                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="<?php echo url('admin/images/layout_img/user_img.jpg')?>" alt="#" /><span class="name_user">John David</span></a>
+                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="<?php echo url('admin/images/layout_img/user_img.jpg')?>" alt="#" /><span class="name_user">{{Session()->get('aname')}}</span></a>
                                     <div class="dropdown-menu">
                                        <a class="dropdown-item" href="profile">My Profile</a>
                                        <a class="dropdown-item" href="settings">Settings</a>
                                        <a class="dropdown-item" href="help">Help</a>
-                                       <a class="dropdown-item" href="#"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
+                                                        
+                                   <a class="dropdown-item" href="/admin_logout"><span>LOG-OUT</span> <i class="fa fa-sign-out"></i></a>
+                                
+                                       
                                     </div>
                                  </li>
                               </ul>

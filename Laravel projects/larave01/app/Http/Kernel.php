@@ -43,6 +43,12 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        'afterlogin_a'=>[
+            \App\Http\Middleware\afterlogin_a::class
+        ],
+        'beforelogin_a'=>[
+            \App\Http\Middleware\beforelogin_a::class
+        ],
     ];
 
     /**
@@ -53,6 +59,12 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $routeMiddleware = [
+        'afterlogin_u' => \App\Http\Middleware\afterlogin_u::class,
+        'beforelogin_u' => \App\Http\Middleware\beforelogin_u::class,
+
+
+       
+
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,

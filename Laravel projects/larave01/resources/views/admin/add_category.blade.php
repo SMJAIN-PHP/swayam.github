@@ -18,21 +18,31 @@
               <h5 class="card-title fw-semibold mb-4">Add Categories</h5>
               <div class="card">
                 <div class="card-body">
-                 <form method="post" enctype="multipart/form-data">
+                 <form action="{{url('/category')}}"   method="post" enctype="multipart/form-data">
+                  @csrf
                   
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label"> Categories Name</label>
-                      <textarea  name="cate_name"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></textarea>
+                      <input type="name"  name="name"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"required>
                     </div>
+                    
+
+                    <div class="mb-3">
+                    <label class="form-label">Categories Image</label>
+                    <input type="file" name="image" class="form-control">
+                    </div>
+
 
                      <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label"> Description</label>
-                      <textarea  name="cate_desp"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></textarea>
+                      <textarea  name="discription"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required></textarea>
                     </div>
+
+                     
 
                     
                    
-                    <button href="#" type="submit" name="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Save</button>
                   </form>
                 </div>
               </div>

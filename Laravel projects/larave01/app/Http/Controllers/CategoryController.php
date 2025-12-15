@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\category;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoryController extends Controller
 {
@@ -35,8 +36,26 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $data= new category;
+
+      $data->name = $request->name;
+      $data->discription = $request->discription;
+
+    if ($request->hasFile('image')) {
+    $image = $request->file('image');
+    $filename = time().'_img.'.$image->getClientOriginalExtension();
+    $image->move(public_path('upload/category'), $filename);
+    $data->image = $filename;
     }
+      $data->save();
+
+       Alert::success('Congrats', ' Category Added Successfully');
+
+      return redirect('/manage_category');
+
+    }
+
+    
 
     /**
      * Display the specified resource.
@@ -56,9 +75,10 @@ class CategoryController extends Controller
      * @param  \App\Models\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(category $category)
+    public function edit(category $category,$id)
     {
-        //
+        $data = category::find($id);
+          return view('admin.edit_category',["category" => $data ]);
     }
 
     /**
@@ -68,9 +88,33 @@ class CategoryController extends Controller
      * @param  \App\Models\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, category $category)
+    public function update(Request $request, category $category,$id)
     {
-        //
+        $data=category::find($id);
+
+      $data->name = $request->name;
+      $data->discription = $request->discription;
+
+
+       if($request->hasFile('image'))
+        {
+            unlink('upload/category/'.$data->image);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = time() . '_img.' . $image->getClientOriginalExtension();
+            $image->move(public_path('upload/category'), $filename);
+            $data->image = $filename;
+        }
+    }
+
+
+
+      $data->update();
+
+      Alert::success('Congrats', ' Category Updated Successfully');
+
+      return redirect('/manage_category');
     }
 
     /**
@@ -79,8 +123,13 @@ class CategoryController extends Controller
      * @param  \App\Models\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(category $category)
+    public function destroy(category $category,$id)
     {
-        //
+       $data=category::find($id); // find se get single data
+        $dlt_category=$data->name;
+        $data->delete();
+
+        Alert::warning('Warning Title', 'category deleted');
+        return back()->with('delete', $dlt_category);
     }
 }

@@ -21,6 +21,7 @@
                 <th>#ID</th>
                 <th>Category Name</th>
                 <th>Description</th>
+                <th>Image</th>
                 <th>Create at</th>
                 <th>Update at</th>
                
@@ -34,12 +35,16 @@
                 <td>{{$data->id}}</td>
                 <td>{{$data->name}}</td>
                 <td>{{$data->discription}}</td>
+<td> <img src="{{asset('upload/category/' . $data->image)}}"
+                    width="80" height="80"
+                    style="object-fit: cover; border-radius: 5px;">
+                </td>
                 <td>{{$data->created_at}}</td>
                 <td>{{$data->updated_at}}</td>
             
                 <td class="text-center">
-                  <a href="#" class="btn btn-primary">Edit</a>
-                  <a href="#" class="btn btn-danger">Delete</a>
+                  <a href="edit_category/{{$data->id}}" class="btn btn-primary">Edit</a>
+                  <a href="dlt_category/{{$data->id}}" class="btn btn-danger">Delete</a>
                 </td>
               </tr>
       @endforeach

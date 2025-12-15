@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class AdminController extends Controller
 {
@@ -14,9 +17,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+     return view('admin.admin-login');
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -38,38 +41,54 @@ class AdminController extends Controller
         //
     }
 
+    //---auth_login function---
+
     public function admin_auth_login(Request $request)
-    {
-       $data = customer::where('email',$request->email)->first();
-       if($data)
-        {
-        if(Hash::check($request->password,$data->password))
-            {
-           if ($data->status == "Unblock") {
-                    echo "<script>
-                    alert('Login success');
-                    window.location='/';
-                    </script>";
-                } else {
-                    echo "<script>
-                    alert('Login Failed due to Blocked Account');
-                    window.location='/web_login';
-                    </script>";
-                }
-            }
-                else {
-                echo "<script>
-                    alert('Login Failed due to wrong password');
-                    window.location='/web_login';
-                    </script>";
-            }
+{
+    $data = admin::where('email', $request->email)->first();
+
+    if ($data) {
+        if (Hash::check($request->password, $data->password)) {
+
+             // session create
+                Session()->put('aname', $data->name);  // $_SESSION['cname']=$data->name
+                Session()->put('aid', $data->id);
+                Session()->put('aid', $data->email);
+                Session()->put('aid', $data->image);
+
+
+
+                
+            echo "<script>
+                alert('Login success');
+                window.location='/dashboard';
+                </script>";
         } else {
             echo "<script>
-                    alert('Login Failed due wrong email');
-                    window.location='/web_login';
-                    </script>";
-       }
+                alert('Login Failed due to wrong password');
+                window.location='/admin-login';
+                </script>";
+        }
+    } else {
+        echo "<script>
+            alert('Login Failed due to wrong email');
+            window.location='/admin-login';
+            </script>";
     }
+}
+
+     public function admin_logout()
+    {
+
+        Session()->pull('aid');
+        Session()->pull('aname');
+         Session()->pull('aemail');
+          Session()->pull('aimage');
+        
+        return redirect('/admin-login');
+    }
+
+
 
     /**
      * Display the specified resource.
@@ -79,7 +98,8 @@ class AdminController extends Controller
      */
     public function show(admin $admin)
     {
-        //
+         $data=$admin::find(session()->get('aid'));
+         return view('admin.profile',["admin"=>$data]);
     }
 
     /**

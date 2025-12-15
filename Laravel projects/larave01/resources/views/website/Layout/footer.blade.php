@@ -106,8 +106,16 @@
     <script src="<?php echo url('website/lib/owlcarousel/owl.carousel.min.js')?>"></script>
     
 
+   
+
+
+
     <!-- Template Javascript -->
     <script src="<?php echo url('website/js/main.js')?>"></script>
+
+     @include('sweetalert::alert')
+
+
     </body>
 
 </php>

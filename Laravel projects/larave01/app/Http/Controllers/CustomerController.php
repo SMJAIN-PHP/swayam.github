@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class CustomerController extends Controller
 {
@@ -67,6 +69,15 @@ class CustomerController extends Controller
         if(Hash::check($request->password,$data->password))
             {
            if ($data->status == "Unblock") {
+
+            // session create
+                Session()->put('cname', $data->name);  // $_SESSION['cname']=$data->name
+                Session()->put('cid', $data->id);
+                Session()->put('cemail', $data->email);
+                Session()->put('cmobile', $data->mobile);
+                Session()->put('cmobile', $data->image);
+               
+
                     echo "<script>
                     alert('Login success');
                     window.location='/';
@@ -92,6 +103,19 @@ class CustomerController extends Controller
        }
     }
 
+     public function web_logout()
+    {
+
+        Session()->pull('cid');
+        Session()->pull('cname');
+        Session()->pull('cemail');
+        Session()->pull('cmobile');
+         Session()->pull('cimage');
+      
+        return redirect('/');
+    
+    }
+
     
     /**
      * Display the specified resource.
@@ -111,9 +135,19 @@ class CustomerController extends Controller
      * @param  \App\Models\customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(customer $customer)
+
+     public function profile(customer $customer)
     {
-        //
+        $data=$customer::find(session()->get('cid'));
+      return view('website.my_profile',["customer"=>$data]);
+    }
+
+
+
+    public function edit(customer $customer,$id)
+    {
+        $data = customer::find($id);
+        return view('website.edit_profile', ["customer"=>$data]);
     }
 
     /**
@@ -123,10 +157,30 @@ class CustomerController extends Controller
      * @param  \App\Models\customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, customer $customer)
+    public function update(Request $request, customer $customer,$id)
     {
-        //
+       {
+       $data=customer::find($id);
+
+       $data->name=$request->name;
+       $data->email=$request->email;
+       $data->mobile=$request->mobile; 
+
+        if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $filename = time().'_img.'.$image->getClientOriginalExtension();
+        $image->move(public_path('upload/customer'), $filename);
+        $data->image = $filename;
     }
+        
+      
+       
+       $data->update();
+
+        Alert::success('success', 'profile Updeted successfully!');
+       return redirect('/my_profile');
+    }
+}
 
     /**
      * Remove the specified resource from storage.

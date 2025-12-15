@@ -23,7 +23,7 @@
                            <div class="white_shd full margin_bottom_30">
                               <div class="full graph_head">
                                  <div class="heading1 margin_0">
-                                    <h2>User profile</h2>
+                                    <h2>Admin profile</h2>
                                  </div>
                               </div>
                               <div class="full price_table padding_infor_info">
@@ -32,14 +32,14 @@
                                     <!-- profile image -->
                                     <div class="col-lg-12">
                                        <div class="full dis_flex center_text">
-                                          <div class="profile_img"><img width="180" class="rounded-circle" src="<?php echo url('admin/images/layout_img/user_img.jpg ')?>" alt="#" /></div>
+                                          <div class="profile_img"><img width="180" class="rounded-circle" src="{{ asset('upload/admin/' .$admin->image ) }}" alt="#" /></div>
                                           <div class="profile_contant">
                                              <div class="contact_inner">
-                                                <h3>John Smith</h3>
+                                                <h3>{{$admin->name}}</h3>
                                                 <p><strong>About: </strong>Frontend Developer</p>
                                                 <ul class="list-unstyled">
-                                                   <li><i class="fa fa-envelope-o"></i> : test@gmail.com</li>
-                                                   <li><i class="fa fa-phone"></i> : 987 654 3210</li>
+                                                   <li><i class="fa fa-envelope-o"></i> : {{$admin->email}}</li>
+                                                   <li><i class="fa fa-phone"></i> {{$admin->mobile}}</li>
                                                 </ul>
                                              </div>
                                              <div class="user_progress_bar">
