@@ -179,8 +179,28 @@ for make with constructor controller: php artisan make:controller invokeblecontr
 Middl ware:
 
 
+======================================================================
+Email Sending  
+
+gmail login gmail 
+
+step : 1 setting=>all setting =>  Forwarding imap /pop
+   enable -> IMAP 
+   enable -> pop 
+   Save 
+
+Step : 2 google app => account => security 
+
+Enable : 2 step verification ON 
 
 
+step 3 : App => Account => search : App password => 
+
+Generate app password =>
+	mail   =>   windows computer => Generate password => copy pass & save in text
+
+{password:
+acuas=> zbef tude hqth aoyr}
 
 
 
@@ -189,4 +209,5 @@ Middl ware:
 
 --------------------------------------------------------------------------------------
 	
+
 	
