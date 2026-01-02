@@ -174,12 +174,12 @@ for make with function controller: php artisan make:controller c_name --resource
 for make with constructor controller: php artisan make:controller invokeblecontroller --invokeble //with constructor
 	=> for call: rought:get('/data'.singalecontroller:class)
 
-======================================================================
+--------------------------------------------------------------------------------------
 
 Middl ware:
 
 
-======================================================================
+--------------------------------------------------------------------------------------
 Email Sending  
 
 gmail login gmail 
@@ -201,6 +201,159 @@ Generate app password =>
 
 {password:
 acuas=> zbef tude hqth aoyr}
+
+
+--------------------------------------------------------------------------------------
+Custom Helper:
+
+we know laravel 11 also provides a helper function for array, url, route, path etc. But not all functions provided that we require. 
+
+Maybe some basic helper function like date format in our project. It requires a lot of time. so i think it's better we create our helper function and use the same code everywhere.
+
+Step 1: Create app/helpers.php File
+
+Step 2: Add File Path In composer.json File
+"autoload": {
+
+"files": [
+       "app/helpers.php"
+   ]
+}
+
+Step 3 : composer dump-autoload    // reset all helper and add 
+
+Note: Now laravel include this page in all pages 
+
+Step 4: You can create your custom function in helpers.php 
+
+You can use as print data in <pre> tag
+
+
+
+if(!function_exists(‘p’) ){
+	
+	Function p($data)
+{
+Echo “<pre>”;
+print_r($data);
+Echo “</pre>”;
+}
+}
+
+
+step 5: Now when you want data in <pre> just call anywhere in pages
+
+p($request->all());
+die;
+
+For custom date format
+
+if(!function_exists(‘custome_date’) ){
+	
+	Function custome_date($date,$format)
+{
+	$date_formated=date($format,strtotime($date));
+	Return $date_formated;
+}
+}
+
+
+Now when you want custom date then call
+{{custome_date($d->dob, “d-M-Y”)}}
+
+For image path setup
+
+function productImagePath($image_name)
+{
+   return public_path('images/products/'.$image_name);
+}
+
+--------------------------------------------------------------------------------------
+Eloquent Relationship
+
+Database tables are often related to one another. For example, a blog post may have many comments or an order could be related to the user who placed it. Eloquent makes managing and working with these relationships easy, and supports a variety of common relationships:
+One To One
+One To Many
+Many To Many
+Has One Through
+Has Many Through
+One To One (Polymorphic)
+One To Many (Polymorphic)
+Many To Many (Polymorphic)
+
+
+---------------------------------------------------------------------------------------
+Localization 
+
+Laravel's localization features provide a convenient way to retrieve strings in various languages,
+allowing you to easily support multiple languages within your application.
+Website in multiple laug like japanese, english,endi,
+
+Step: 1 : resources/lang 
+Create one file for multi language content  lang.php
+
+Create multi folder like  
+
+en
+Hi
+Ko
+Gu
+
+
+Then create similar file in all folder like lang.php
+Add below code with array format with keywords
+
+<?php
+
+return ['welocme'=>'घर में आपका स्वागत है',
+		'home'=>'घर',
+		'about'=>'के बारे में',
+		'services'=>'सेवाएं',
+		'blog'=>'ब्लॉग'
+];
+
+
+?>
+
+Then call all keywords in main blade.php 
+
+<h1>@lang('lang.welcome')</h1>
+
+<a href="#">@lang('lang.home')</a>
+<a href="#">@lang('lang.about')</a>
+<a href="#">@lang('lang.services')</a>
+<a href="#">@lang('lang.blog')</a>
+
+
+
+Step: 2  Define any language as Default
+Go : config/app.php
+
+Find  ‘locale’=> ‘en’   // Default laung set
+
+Find ‘fallback_cocale’=>’en’   // not find any type then default take 
+
+Set any folder name ko , gu , hi 
+
+Step 3 : Now create multiple changes by dropdown or make link  so set Routes
+Web.php
+
+Route::get(‘/{lang?}’,function($lang==null){
+	
+	App::setlocale($lang);
+	Return view(‘welcome’);
+})
+
+
+-------------------------------------------------------------------------------------
+Stub Customization:
+
+When we use Laravel artisan command to generate controller, model, factory, migration etc then we can see we get a code skeleton of each associated class or file. That well written code skeleton called as Laravel stub.
+
+Laravel stub feature is included from laravel 7 version. Inside this article we will see Laravel 8 stub customization. If suppose we want to by default few methods, variables into class file of controller, model etc then we can generate.
+When we write any code in stub files then it will come with generated file. For example, if we add few methods in controller stub file, then whenever we generate controller file from php artisan command. Those added methods by default will come with file.
+Make Stab : php artisan stub:publish
+This command create the stubs folder at project root. When we open, we can see we have several files which is basically a skeleton file for migration, controller, model etc.
 
 
 
